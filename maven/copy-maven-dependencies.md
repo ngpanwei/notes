@@ -2,7 +2,10 @@ How to copy Maven dependencies to a folder
 ==========================================
 
 Description:
-Sometimes we want to collect all the jars from maven repository into a single folder so that we can package them easily.
+Sometimes we want to collect all the jars from maven repository into a single folder so that we can package them easily. Collecting jars is what ant old-timers like to do.
+
+You can do this via the [maven-dependency-plugin](http://maven.apache.org/plugins/maven-dependency-plugin/). see [here](http://maven.apache.org/plugins/maven-dependency-plugin/examples/copying-project-dependencies.html) for more details. 
+
 
 Add the following to your pom.xml
 ````
@@ -20,7 +23,7 @@ Add the following to your pom.xml
 									<goal>copy-dependencies</goal>
 								</goals>
 								<configuration>
-									<outputDirectory>lib</outputDirectory>
+									<outputDirectory>{folder}</outputDirectory>
 								</configuration>
 							</execution>
 						</executions>
@@ -29,4 +32,9 @@ Add the following to your pom.xml
 			</build>
 		</profile>
 	</profiles>
+````
+
+then from the command line, 
+````
+> mvn dependency:copy-dependencies
 ````
